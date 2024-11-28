@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { DM_Sans, Figtree } from "next/font/google";
 import "../styles/globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import NextTopLoader from "nextjs-toploader";
+
+const figTree = Figtree({ subsets: ["latin"], variable: "--figTree" });
+const dm_sans = DM_Sans({ subsets: ["latin"], variable: "--dm-sans" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,8 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning={true}
+        className={`${figTree.variable} ${dm_sans.variable}`}
       >
+        <NextTopLoader color="#ADFF1C" />
         {children}
       </body>
     </html>
